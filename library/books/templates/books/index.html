@@ -1,0 +1,18 @@
+{% extends "books/layout.html" %}
+
+{% block content %}
+
+<h1> BOOKS </h1>
+  <ul>
+    {% for book in books %}
+    <li>
+      <a href="{% url 'book' book.id %}">
+      Book {{book.id}}: {{book.title}} - By {{book.author}}</a></li>
+    {% empty %}
+    <p>You have not booked any books yet </p>
+    {% endfor %}
+  </ul>
+
+ 
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "catalog/layout.html" %}
+
+{% block content %}
+  <h1>Book List</h1>
+  <ul>
+    {% for book in books %}
+      <li>
+        <a href="books/{{ book.id }}">{{ book.title }}</a> ({{book.author}})
+      </li>
+        {% empty %}
+    <p>There are no books in the library.</p>
+  {% endfor %}
+  </ul>
+{% endblock %}
+

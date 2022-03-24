@@ -1,0 +1,11 @@
+{% extends "catalog/layout.html" %}
+
+{% block content %}
+  <h1>Title: {{ book }}</h1>
+
+  <p><strong>Author:</strong> <a href="">{{ author }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Summary:</strong> {{ summary }}</p>
+  <p><strong>ISBN:</strong> {{ isbn }}</p>
+  <p><strong>Genre:</strong> {{ genre.all|join:", " }}</p>
+
+{% endblock %}

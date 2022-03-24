@@ -1,0 +1,35 @@
+{% extends "books/layout.html" %}
+
+{% block content %}
+<h1>Book {{ book.id }}</h1>
+
+<ul>
+    <li>Title: {{ book.title }}</li>
+    <li>Author: {{ book.author }}</li>
+</ul>
+
+<h2>I have {{ readers.count }} reader{{ readers.count | pluralize }}</h2>
+<ul>
+    {% for reader in readers %}
+    <li>{{reader}}</li>
+    {% empty %}
+    <li>No readers</li>
+    {% endfor %}
+</ul>
+
+<h2> Add readers</h2>
+<form action="{% url 'add' book.id %}" method="POST">
+    {% csrf_token %}
+    <select name="reader" id="reader">
+        {% for reader in non_readers %}
+        <option value="{{ reader.id }}">
+          {{ reader }}
+        </option>
+        {% endfor %}
+    </select>
+
+    <input type="submit" value="Add Reader">
+</form>
+
+<a href="{% url 'index' %}">Back to Books</a>
+{% endblock %}
